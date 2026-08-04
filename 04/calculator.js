@@ -7,12 +7,14 @@ const calculator = `
     <title>Calculator</title>
   </head>
   <body>
-    <form>
+    <form action="/calculate-result" method="POST">
       <label for="num1">Enter number 1: </label>
-      <input id="num1" />
+      <input type="number" id="num1" name="num1" required />
+      <br><br>
       <label for="num2">Enter number 2: </label>
-      <input id="num2" />
-      <a href="/calculate-result"><button type="submit">Sum</button></a>
+      <input type="number" id="num2" name="num2" required />
+      <br><br>
+      <button type="submit">Sum</button>
     </form>
   </body>
 </html>
