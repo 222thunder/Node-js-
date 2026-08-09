@@ -106,7 +106,11 @@
             <div
               class="relative aspect-square w-full overflow-hidden bg-linear-to-br from-rose-100 to-rose-200 flex items-center justify-center text-rose-500"
             >
-              <img src="<%= home.housePhoto %>" alt="<%= home.houseName %>" class="h-full w-full object-cover" />
+              <img
+                src="<%= home.housePhoto %>"
+                alt="<%= home.houseName %>"
+                class="h-full w-full object-cover"
+              />
 
               <!-- Badge -->
               <span
@@ -144,7 +148,7 @@
                 class="mt-auto pt-3 flex items-center justify-between border-t border-gray-150"
               >
                 <p class="text-sm font-semibold text-gray-900">
-                  <%= home.housePrice %>
+                  <%= home.housePrice %> $
                   <span class="font-normal text-gray-500">/ night</span>
                 </p>
               </div>

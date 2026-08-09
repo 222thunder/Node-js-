@@ -11,7 +11,6 @@ const registeredHomes = [];
 
 hostRouter.post("/add-home", (req, res, next) => {
   res.render("homeAdded.ejs");
-  console.log("req.body is ", req.body);
   registeredHomes.push({
     houseName: req.body.housename,
     housePrice: req.body.houseprice,
