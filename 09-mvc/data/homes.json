@@ -1,0 +1,30 @@
+[
+  {
+    "houseName": "Utsav",
+    "housePrice": "130",
+    "houseLocation": "London",
+    "houseRating": "120",
+    "housePhoto": "https://images.pexels.com/photos/16047313/pexels-photo-16047313.jpeg"
+  },
+  {
+    "houseName": "Sanyam",
+    "housePrice": "120",
+    "houseLocation": "Delhi",
+    "houseRating": "8",
+    "housePhoto": "https://images.pexels.com/photos/37295817/pexels-photo-37295817.jpeg"
+  },
+  {
+    "houseName": "Another One",
+    "housePrice": "1000",
+    "houseLocation": "Miami",
+    "houseRating": "5",
+    "housePhoto": "https://images.pexels.com/photos/34498022/pexels-photo-34498022.jpeg"
+  },
+  {
+    "houseName": "House No.4 ",
+    "housePrice": "145",
+    "houseLocation": "Paris",
+    "houseRating": "10",
+    "housePhoto": "https://images.pexels.com/photos/36425959/pexels-photo-36425959.jpeg"
+  }
+]
