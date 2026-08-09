@@ -1,7 +1,7 @@
 const Home = require("../models/home");
 
 exports.getAddHome = (req, res, next) => {
-  res.render("addHome");
+  res.render("host/add-home");
 };
 
 exports.postAddHome = async (req, res, next) => {
@@ -13,13 +13,10 @@ exports.postAddHome = async (req, res, next) => {
     req.body.housephoto,
   );
   await home.save();
-  res.render("homeAdded");
+  res.render("host/home-added");
 };
 
-exports.getHomes = async (req, res, next) => {
+exports.getHostHomes = async (req, res, next) => {
   const registeredHomes = await Home.fetchAll();
-  res.render("home", { registeredHomes: registeredHomes });
-  // Home.fetchAll((registeredHomes) => {
-  //   res.render("home", { registeredHomes: registeredHomes });
-  // });
+  res.render("host/host-home-list", { registeredHomes: registeredHomes });
 };

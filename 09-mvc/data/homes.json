@@ -3,7 +3,7 @@
     "houseName": "Utsav",
     "housePrice": "130",
     "houseLocation": "London",
-    "houseRating": "120",
+    "houseRating": "1",
     "housePhoto": "https://images.pexels.com/photos/16047313/pexels-photo-16047313.jpeg"
   },
   {
@@ -26,5 +26,12 @@
     "houseLocation": "Paris",
     "houseRating": "10",
     "housePhoto": "https://images.pexels.com/photos/36425959/pexels-photo-36425959.jpeg"
+  },
+  {
+    "houseName": "Another one",
+    "housePrice": "900",
+    "houseLocation": "LA",
+    "houseRating": "8.7",
+    "housePhoto": "https://images.pexels.com/photos/29421579/pexels-photo-29421579.jpeg"
   }
 ]
