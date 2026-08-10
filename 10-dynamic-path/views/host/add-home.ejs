@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Home to Airbnb</title>
+    <link href="/output.css" rel="stylesheet" />
+  </head>
+  <body
+    class="flex min-h-screen flex-col bg-linear-to-br from-rose-50 via-white to-rose-100"
+  >
+    <%- include('../partials/nav') %>
+
+    <main class="flex flex-1 items-center justify-center px-6 py-16">
+      <div class="w-full max-w-md rounded-2xl bg-white p-8 shadow-xl">
+        <h1 class="text-3xl font-bold text-gray-900">Register your home</h1>
+        <p class="mt-2 text-sm text-gray-500">
+          Tell us the name of your house to get started.
+        </p>
+
+        <form
+          action="/host/add-home"
+          method="POST"
+          class="mt-6 flex flex-col gap-4"
+        >
+          <input
+            type="text"
+            name="housename"
+            placeholder="Enter name of your house"
+            class="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-[#FF5A5F] focus:outline-none focus:ring-2 focus:ring-[#FF5A5F]/30"
+          />
+
+          <input
+            type="text"
+            name="houseprice"
+            placeholder="Enter price per night of your house"
+            class="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-[#FF5A5F] focus:outline-none focus:ring-2 focus:ring-[#FF5A5F]/30"
+          />
+
+          <input
+            type="text"
+            name="houselocation"
+            placeholder="Enter location of your house"
+            class="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-[#FF5A5F] focus:outline-none focus:ring-2 focus:ring-[#FF5A5F]/30"
+          />
+
+          <input
+            type="text"
+            name="houserating"
+            placeholder="Enter rating of your house"
+            class="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-[#FF5A5F] focus:outline-none focus:ring-2 focus:ring-[#FF5A5F]/30"
+          />
+
+          <input
+            type="text"
+            name="housephoto"
+            placeholder="Enter photo of your house"
+            class="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-[#FF5A5F] focus:outline-none focus:ring-2 focus:ring-[#FF5A5F]/30"
+          />
+
+          <input
+            type="submit"
+            value="Add Home"
+            class="cursor-pointer rounded-lg bg-[#FF5A5F] px-4 py-3 font-semibold text-white shadow-md transition hover:bg-[#e54e52]"
+          />
+        </form>
+      </div>
+    </main>
+  </body>
+</html>
