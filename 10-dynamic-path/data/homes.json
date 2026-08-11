@@ -1,13 +1,5 @@
 [
   {
-    "houseName": "Utsav",
-    "housePrice": "130",
-    "houseLocation": "London",
-    "houseRating": "1",
-    "housePhoto": "https://images.pexels.com/photos/16047313/pexels-photo-16047313.jpeg",
-    "id": "1"
-  },
-  {
     "houseName": "Sanyam",
     "housePrice": "120",
     "houseLocation": "Delhi",

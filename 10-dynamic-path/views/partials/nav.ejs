@@ -5,31 +5,34 @@
     class="text-2xl font-extrabold tracking-tight text-white transition hover:opacity-90 mr-2"
     >airbnb</a
   >
+  <% 
+    const path = typeof currentPath !== 'undefined' ? currentPath : ''; 
+  %>
   <a
     href="/homes"
-    class="rounded-full border border-white/75 bg-white/10 px-5 py-2 text-sm font-semibold text-white backdrop-blur-xs transition-all duration-200 hover:bg-white hover:text-[#FF5A5F] hover:shadow-md active:scale-95"
+    class="rounded-full px-5 py-2 text-sm font-semibold transition-all duration-200 active:scale-95 hover:shadow-md <%= (path === '/homes' || path === '/') ? 'bg-white text-[#FF5A5F] shadow-md hover:bg-white/90 hover:-translate-y-0.5' : 'border border-white/75 bg-white/10 text-white backdrop-blur-xs hover:bg-white hover:text-[#FF5A5F] hover:-translate-y-0.5' %>"
     >Home</a
   >
 
   <a
+    href="/favorite"
+    class="rounded-full px-5 py-2 text-sm font-semibold transition-all duration-200 active:scale-95 hover:shadow-md <%= path === '/favorite' ? 'bg-white text-[#FF5A5F] shadow-md hover:bg-white/90 hover:-translate-y-0.5' : 'border border-white/75 bg-white/10 text-white backdrop-blur-xs hover:bg-white hover:text-[#FF5A5F] hover:-translate-y-0.5' %>"
+    >Favorites</a
+  >
+  <a
     href="/bookings"
-    class="rounded-full border border-white/75 bg-white/10 px-5 py-2 text-sm font-semibold text-white backdrop-blur-xs transition-all duration-200 hover:bg-white hover:text-[#FF5A5F] hover:shadow-md active:scale-95"
+    class="rounded-full px-5 py-2 text-sm font-semibold transition-all duration-200 active:scale-95 hover:shadow-md <%= path === '/bookings' ? 'bg-white text-[#FF5A5F] shadow-md hover:bg-white/90 hover:-translate-y-0.5' : 'border border-white/75 bg-white/10 text-white backdrop-blur-xs hover:bg-white hover:text-[#FF5A5F] hover:-translate-y-0.5' %>"
     >Bookings</a
   >
 
   <a
-    href="/favorite"
-    class="rounded-full border border-white/75 bg-white/10 px-5 py-2 text-sm font-semibold text-white backdrop-blur-xs transition-all duration-200 hover:bg-white hover:text-[#FF5A5F] hover:shadow-md active:scale-95"
-    >Favorites</a
-  >
-  <a
     href="/host/add-home"
-    class="rounded-full border border-white/75 bg-white/10 px-5 py-2 text-sm font-semibold text-white backdrop-blur-xs transition-all duration-200 hover:bg-white hover:text-[#FF5A5F] hover:shadow-md active:scale-95"
+    class="rounded-full px-5 py-2 text-sm font-semibold transition-all duration-200 active:scale-95 hover:shadow-md <%= path === '/host/add-home' ? 'bg-white text-[#FF5A5F] shadow-md hover:bg-white/90 hover:-translate-y-0.5' : 'border border-white/75 bg-white/10 text-white backdrop-blur-xs hover:bg-white hover:text-[#FF5A5F] hover:-translate-y-0.5' %>"
     >Add Home</a
   >
   <a
     href="/host/host-home-list"
-    class="rounded-full border border-white/75 bg-white/10 px-5 py-2 text-sm font-semibold text-white backdrop-blur-xs transition-all duration-200 hover:bg-white hover:text-[#FF5A5F] hover:shadow-md active:scale-95"
+    class="rounded-full px-5 py-2 text-sm font-semibold transition-all duration-200 active:scale-95 hover:shadow-md <%= path === '/host/host-home-list' ? 'bg-white text-[#FF5A5F] shadow-md hover:bg-white/90 hover:-translate-y-0.5' : 'border border-white/75 bg-white/10 text-white backdrop-blur-xs hover:bg-white hover:text-[#FF5A5F] hover:-translate-y-0.5' %>"
     >Host List</a
   >
 </nav>

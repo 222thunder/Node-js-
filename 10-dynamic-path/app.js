@@ -14,6 +14,10 @@ const { getError } = require("./controllers/error");
 app.use(express.static(path.join(rootDir, "public")));
 
 app.use(express.urlencoded());
+app.use((req, res, next) => {
+  res.locals.currentPath = req.path;
+  next();
+});
 app.use(storeRouter);
 app.use("/host", hostRouter);
 

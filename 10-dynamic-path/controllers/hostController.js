@@ -1,7 +1,9 @@
 const Home = require("../models/home");
 
 exports.getAddHome = (req, res, next) => {
-  res.render("host/add-home");
+  res.render("host/edit-home", {
+    pageTitle: "Add Home to Airbnb",
+  });
 };
 
 exports.postAddHome = async (req, res, next) => {
@@ -19,4 +21,41 @@ exports.postAddHome = async (req, res, next) => {
 exports.getHostHomes = async (req, res, next) => {
   const registeredHomes = await Home.fetchAll();
   res.render("host/host-home-list", { registeredHomes: registeredHomes });
+};
+
+exports.getEditHome = async (req, res, next) => {
+  const homeId = req.params.homeId;
+  const editng = req.query.editing === "true";
+  const home = await Home.findById(homeId);
+  if (!home) {
+    console.log("Home can't be found");
+    res.redirect("/host/host-home-list");
+  } else {
+    console.log(home);
+    res.render("host/edit-home", {
+      pageTitle: "Edit Home",
+      editing: editng,
+      home: home,
+    });
+  }
+};
+
+exports.postEditHome = async (req, res, next) => {
+  const homeId = req.params.homeId;
+  const newHome = new Home(
+    req.body.housename,
+    req.body.houseprice,
+    req.body.houselocation,
+    req.body.houserating,
+    req.body.housephoto,
+  );
+
+  await Home.EditHome(homeId, newHome);
+  res.redirect("/host/host-home-list");
+};
+
+exports.postDeleteHome = async (req, res, next) => {
+  const homeId = req.params.homeId;
+  await Home.DeleteHome(homeId);
+  res.redirect("/host/host-home-list");
 };
