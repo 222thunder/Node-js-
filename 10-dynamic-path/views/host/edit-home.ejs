@@ -18,8 +18,9 @@
           Tell us the name of your house to get started.
         </p>
 
+        <% const isEditing = typeof editing !== 'undefined' && editing; %>
         <form
-          action="<%= editing ? '/host/edit-home/' + home.id : '/host/add-home' %>"
+          action="<%= isEditing ? '/host/edit-home/' + home.id : '/host/add-home' %>"
           method="POST"
           class="mt-6 flex flex-col gap-4"
         >
@@ -27,7 +28,7 @@
             type="text"
             name="housename"
             placeholder="Enter name of your house"
-            value="<%= editing ? home.houseName : '' %>"
+            value="<%= isEditing && typeof home !== 'undefined' ? home.houseName : '' %>"
             class="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-[#FF5A5F] focus:outline-none focus:ring-2 focus:ring-[#FF5A5F]/30"
           />
 
@@ -35,7 +36,7 @@
             type="text"
             name="houseprice"
             placeholder="Enter price per night of your house"
-            value="<%= editing ? home.housePrice: '' %>"
+            value="<%= isEditing && typeof home !== 'undefined' ? home.housePrice: '' %>"
             class="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-[#FF5A5F] focus:outline-none focus:ring-2 focus:ring-[#FF5A5F]/30"
           />
 
@@ -43,7 +44,7 @@
             type="text"
             name="houselocation"
             placeholder="Enter location of your house"
-            value="<%= editing ? home.houseLocation : '' %>"
+            value="<%= isEditing && typeof home !== 'undefined' ? home.houseLocation : '' %>"
             class="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-[#FF5A5F] focus:outline-none focus:ring-2 focus:ring-[#FF5A5F]/30"
           />
 
@@ -51,7 +52,7 @@
             type="text"
             name="houserating"
             placeholder="Enter rating of your house"
-            value="<%= editing ? home.houseRating: '' %>"
+            value="<%= isEditing && typeof home !== 'undefined' ? home.houseRating: '' %>"
             class="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-[#FF5A5F] focus:outline-none focus:ring-2 focus:ring-[#FF5A5F]/30"
           />
 
@@ -59,13 +60,13 @@
             type="text"
             name="housephoto"
             placeholder="Enter photo of your house"
-            value="<%= editing ? home.housePhoto: '' %>"
+            value="<%= isEditing && typeof home !== 'undefined' ? home.housePhoto: '' %>"
             class="w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-900 placeholder-gray-400 focus:border-[#FF5A5F] focus:outline-none focus:ring-2 focus:ring-[#FF5A5F]/30"
           />
 
           <input
             type="submit"
-            value="<%= editing ? "Updated" : 'Add Home' %>"
+            value="<%= isEditing ? 'Update Home' : 'Add Home' %>"
             class="cursor-pointer rounded-lg bg-[#FF5A5F] px-4 py-3 font-semibold text-white shadow-md transition hover:bg-[#e54e52]"
           />
         </form>
