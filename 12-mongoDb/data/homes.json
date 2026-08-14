@@ -1,0 +1,42 @@
+[
+  {
+    "houseName": "Sanyam",
+    "housePrice": "120",
+    "houseLocation": "Delhi",
+    "houseRating": "8",
+    "housePhoto": "https://images.pexels.com/photos/37295817/pexels-photo-37295817.jpeg",
+    "id": "2"
+  },
+  {
+    "houseName": "Another One",
+    "housePrice": "1000",
+    "houseLocation": "Miami",
+    "houseRating": "5",
+    "housePhoto": "https://images.pexels.com/photos/34498022/pexels-photo-34498022.jpeg",
+    "id": "3"
+  },
+  {
+    "houseName": "House No.4 ",
+    "housePrice": "145",
+    "houseLocation": "Paris",
+    "houseRating": "10",
+    "housePhoto": "https://images.pexels.com/photos/36425959/pexels-photo-36425959.jpeg",
+    "id": "4"
+  },
+  {
+    "houseName": "Another one",
+    "housePrice": "900",
+    "houseLocation": "LA",
+    "houseRating": "8.7",
+    "housePhoto": "https://images.pexels.com/photos/29421579/pexels-photo-29421579.jpeg",
+    "id": "5"
+  },
+  {
+    "houseName": "Summer Home",
+    "housePrice": "100",
+    "houseLocation": "LA",
+    "houseRating": "4",
+    "housePhoto": "https://images.pexels.com/photos/17889688/pexels-photo-17889688.jpeg",
+    "id": "0.24258262848264844"
+  }
+]
