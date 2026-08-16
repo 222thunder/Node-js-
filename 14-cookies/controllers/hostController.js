@@ -4,6 +4,8 @@ exports.getAddHome = (req, res, next) => {
   res.render("host/edit-home", {
     pageTitle: "Add Home to Airbnb",
     editing: false,
+    isLoggedIn: req.session.isLoggedIn,
+    userType: req.session.userType,
   });
 };
 
@@ -17,12 +19,19 @@ exports.postAddHome = async (req, res, next) => {
     houseDescription: req.body.houseDescription,
   });
   await home.save();
-  res.render("host/home-added");
+  res.render("host/home-added", {
+    isLoggedIn: req.session.isLoggedIn,
+    userType: req.session.userType,
+  });
 };
 
 exports.getHostHomes = async (req, res, next) => {
   const registeredHomes = await Home.find();
-  res.render("host/host-home-list", { registeredHomes: registeredHomes });
+  res.render("host/host-home-list", {
+    registeredHomes: registeredHomes,
+    isLoggedIn: req.session.isLoggedIn,
+    userType: req.session.userType,
+  });
 };
 
 exports.getEditHome = async (req, res, next) => {
@@ -37,6 +46,8 @@ exports.getEditHome = async (req, res, next) => {
       pageTitle: "Edit Home",
       editing: editing,
       home: home,
+      isLoggedIn: req.session.isLoggedIn,
+      userType: req.session.userType,
     });
   }
 };

@@ -1,71 +1,117 @@
 const Home = require("../models/home");
-const Favorite = require("../models/favorite");
+const User = require("../models/user");
 
 exports.getHomes = async (req, res, next) => {
   const registeredHomes = await Home.find();
-  const favoriteHomes = await Favorite.getFavoriteHomes();
-  const favoriteIds = await Favorite.find();
+
+  let favoriteIds = [];
+  if (req.session.isLoggedIn && req.session.userId) {
+    const user = await User.findById(req.session.userId);
+    if (user) favoriteIds = user.favorites;
+  }
+
   res.render("store/home-list", {
     registeredHomes: registeredHomes,
-    favoriteHomes: favoriteHomes,
     favoriteIds: favoriteIds,
+    isLoggedIn: req.session.isLoggedIn,
+    userType: req.session.userType,
   });
 };
 
 exports.getBooking = async (req, res, next) => {
-  res.render("store/bookings");
+  res.render("store/bookings", {
+    isLoggedIn: req.session.isLoggedIn,
+    userType: req.session.userType,
+  });
 };
 
 exports.getFavList = async (req, res, next) => {
-  const favoriteHomes = await Favorite.getFavoriteHomes();
-  const favoriteIds = await Favorite.find();
+  let favoriteHomes = [];
+  let favoriteIds = [];
+  const registeredHomes = await Home.find();
+
+  if (req.session.isLoggedIn && req.session.userId) {
+    const user = await User.findById(req.session.userId);
+    if (user) favoriteIds = user.favorites;
+  }
+
+  favoriteHomes = registeredHomes.filter((home) =>
+    favoriteIds.some((favId) => String(favId) === String(home._id))
+  );
+
   res.render("store/fav-list", {
     registeredHomes: favoriteHomes,
     favoriteHomes: favoriteHomes,
     favoriteIds: favoriteIds,
+    isLoggedIn: req.session.isLoggedIn,
+    userType: req.session.userType,
   });
 };
 
 exports.postAddToFav = async (req, res, next) => {
   const homeId = req.body.homeId;
-  const existingFav = await Favorite.findOne({ homeId });
-  if (!existingFav) {
-    const favorite = new Favorite({ homeId });
-    await favorite.save();
+
+  if (req.session.isLoggedIn && req.session.userId) {
+    const user = await User.findById(req.session.userId);
+    if (user && !user.favorites.includes(homeId)) {
+      user.favorites.push(homeId);
+      await user.save();
+    }
   }
+
   res.redirect("/homes");
 };
 
 exports.postRemoveFromFav = async (req, res, next) => {
   const homeId = req.body.homeId;
-  await Favorite.findOneAndDelete({ homeId });
+
+  if (req.session.isLoggedIn && req.session.userId) {
+    const user = await User.findById(req.session.userId);
+    if (user) {
+      user.favorites = user.favorites.filter(
+        (favId) => String(favId) !== String(homeId)
+      );
+      await user.save();
+    }
+  }
+
   res.redirect("/favorite");
 };
 
 exports.getIndex = async (req, res, next) => {
   const registeredHomes = await Home.find();
-  const favoriteHomes = await Favorite.getFavoriteHomes();
-  const favoriteIds = await Favorite.find();
+
+  let favoriteIds = [];
+  if (req.session.isLoggedIn && req.session.userId) {
+    const user = await User.findById(req.session.userId);
+    if (user) favoriteIds = user.favorites;
+  }
+
   res.render("store/index", {
     registeredHomes: registeredHomes,
-    favoriteHomes: favoriteHomes,
     favoriteIds: favoriteIds,
+    isLoggedIn: req.session.isLoggedIn,
+    userType: req.session.userType,
   });
 };
 
 exports.getHomeId = async (req, res, next) => {
   const homeId = req.params.homeId;
   const home = await Home.findById(homeId);
-  const favoriteIds = await Favorite.find();
-  const favoriteHomes = await Favorite.getFavoriteHomes();
+
+  let favoriteIds = [];
+  if (req.session.isLoggedIn && req.session.userId) {
+    const user = await User.findById(req.session.userId);
+    if (user) favoriteIds = user.favorites;
+  }
+
   if (home) {
     res.render("store/home-details", {
       home: home,
-      favoriteHomes: favoriteHomes,
       favoriteIds: favoriteIds,
-      isFavorite: favoriteIds.some(
-        (fav) => String(fav.homeId) === String(homeId),
-      ),
+      isFavorite: favoriteIds.some((fav) => String(fav) === String(homeId)),
+      isLoggedIn: req.session.isLoggedIn,
+      userType: req.session.userType,
     });
   } else {
     res.redirect("/homes");

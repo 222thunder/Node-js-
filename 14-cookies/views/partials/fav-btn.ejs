@@ -1,7 +1,6 @@
-<% const isFav = (typeof favoriteIds !== 'undefined' &&
-Array.isArray(favoriteIds) && favoriteIds.includes(String(home._id))) || (typeof
-favoriteHomes !== 'undefined' && Array.isArray(favoriteHomes) &&
-favoriteHomes.some((fav) => String(fav._id) === String(home._id))); %>
+<% const isFav = typeof favoriteIds !== 'undefined' &&
+Array.isArray(favoriteIds) &&
+favoriteIds.some((fav) => String(fav._id || fav) === String(home._id)); %>
 
 <form
   action="<%= isFav ? '/favorite/remove' : '/favorite/add' %>"
