@@ -13,14 +13,14 @@ exports.getLogin = (req, res, next) => {
 };
 
 exports.postLogin = async (req, res, next) => {
-  const { email, password } = req.body;
+  const { email, password, rememberMe } = req.body;
   const user = await User.findOne({ email: email });
   if (!user) {
     return res.status(422).render("auth/login", {
       pageTitle: "Login",
       isLoggedIn: false,
       errorMessage: "User does not exist. Please sign up first.",
-      oldInput: { email },
+      oldInput: { email, rememberMe },
       userType: null,
     });
   }
@@ -31,9 +31,16 @@ exports.postLogin = async (req, res, next) => {
       pageTitle: "Login",
       isLoggedIn: false,
       errorMessage: "Invalid password. Please try again.",
-      oldInput: { email },
+      oldInput: { email, rememberMe },
       userType: null,
     });
+  }
+
+  if (rememberMe) {
+    const thirtyDays = 30 * 24 * 60 * 60 * 1000;
+    req.session.cookie.maxAge = thirtyDays;
+  } else {
+    req.session.cookie.maxAge = null; //
   }
 
   req.session.isLoggedIn = true;
