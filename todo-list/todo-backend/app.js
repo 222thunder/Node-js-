@@ -3,11 +3,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
-const path = require("path");
 const DB_PATH =
   "mongodb+srv://sanyamdhawan2007_db_user:gLo0xWGiA8itBhUZ@cluster0.qffudrb.mongodb.net/todo?appName=Cluster0";
 //local
-const rootDir = require("./utils/pathUtils");
+
 const todoItemsRouter = require("./routes/todoItemsRouter");
 const { getError } = require("./controllers/error");
 
